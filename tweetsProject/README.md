@@ -14,5 +14,5 @@ This Flask app scrapes tweets based on a topic, performs sentiment analysis usin
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/tweetsProject.git
+git clone https://github.com/HAMZA200412/tweetsProject.git
 cd tweetsProject
