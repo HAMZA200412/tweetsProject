@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Scraper</title>
+    <link rel="stylesheet" href="static/style.css">
+    <style>
+        .logo {
+            position: absolute;
+            background: url('static/tt.png') no-repeat center center;
+            background-size: contain;
+            width: 50px;
+            height: 50px;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container"></div>
+    <div class="container">
+        <h1>Twitter Scraper</h1>
+        <form action="/scrap" method="POST">
+            <div class="form-group">
+                <label for="topic">Topic:</label>
+                <input type="text" id="topic" name="topic" placeholder="Enter topic to scrape" required>
+            </div>
+            <div class="form-group">
+                <label for="iterations">Number of Iterations:</label>
+                <input type="number" id="iterations" name="iterations" placeholder="Enter number of iterations" min="1" required>
+            </div>
+            <button type="submit" class="scrap-button">Scrape</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoContainer = document.querySelector('.logo-container');
+            for (let i = 0; i < 17; i++) {
+                const logo = document.createElement('div');
+                logo.classList.add('logo');
+                logo.style.top = `${Math.random() * 100}vh`;
+                logo.style.left = `${Math.random() * 100}vw`;
+                logoContainer.appendChild(logo);
+            }
+
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (event) => {
+                const iterationsInput = document.getElementById('iterations');
+                const iterationsValue = parseInt(iterationsInput.value, 10);
+
+                if (isNaN(iterationsValue) || iterationsValue < 1) {
+                    alert('Please enter a valid positive number for iterations.');
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
